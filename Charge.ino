@@ -21,15 +21,28 @@ void relayOFF() {
   Serial.println(F(">>> RELAY: OFF"));
 }
 
+// int calculateChargingTime(float weight) {
+//   if (weight < 100) {
+//     return 0;
+//   } else if (weight >= 500) {
+//     return 192;
+//   } else {
+//     float extraWeight = weight - 100;
+//     int intervals = (int)(extraWeight / 25);
+//     return intervals * 12;
+//   }
+// }
+
+//adjusted charging time per 20 minutes
 int calculateChargingTime(float weight) {
-  if (weight < 100) {
+  if (weight < 20) {
     return 0;
   } else if (weight >= 500) {
-    return 192;
+    return 120;
   } else {
-    float extraWeight = weight - 100;
-    int intervals = (int)(extraWeight / 25);
-    return intervals * 12;
+    float extraWeight = weight - 20;
+    int intervals = (int)(extraWeight / 20);
+    return intervals * 5;
   }
 }
 
